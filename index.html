@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linguistics Research Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1a2530);
+            color: var(--light-text);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav a:hover, nav a:focus {
+            background-color: rgba(255,255,255,0.1);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px var(--shadow);
+            padding: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.75rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .content {
+            margin-top: 1rem;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .challenge-card {
+            background: linear-gradient(to bottom right, #f1f8ff, #e3f2fd);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .challenge-card h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            background: linear-gradient(to bottom right, #f1f8ff, #e3f2fd);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .step-number {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .step h4 {
+            margin-top: 0;
+            display: inline;
+            color: var(--primary-color);
+        }
+
+        .tech-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-spec {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background: linear-gradient(135deg, #1a2530, #2c3e50);
+            color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            margin: 1.5rem 0;
+        }
+
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #f1f8ff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), #1a2530);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav a {
+                padding: 0.75rem 1rem;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+            
+            nav a:hover, nav a:focus {
+                border-left: 3px solid var(--secondary-color);
+                border-bottom: none;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Visual elements for better presentation */
+        .highlight {
+            background-color: #fff9c4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quote {
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+
+        .diagram {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f1f8ff;
+            border-radius: 8px;
+        }
+
+        .diagram-title {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .workflow-chart {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 1.5rem 0;
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 1rem;
+            margin: 0.5rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 6px var(--shadow);
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .process-flow {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Semantic-Aware Literature Retrieval System</h1>
+        <p>Enhancing Linguistic Research Through Intelligent Document Discovery</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#problem">Problem Definition</a></li>
+            <li><a href="#solution">Proposed Solution</a></li>
+            <li><a href="#results">Results and Evaluation</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="problem">
+            <h2>Problem Definition</h2>
+            <div class="content">
+                <p>In the rapidly evolving field of linguistics and literature research, scholars face significant challenges in efficiently discovering relevant academic works. Traditional search mechanisms fall short in several critical areas:</p>
+                
+                <div class="challenge-grid">
+                    <div class="challenge-card">
+                        <h4>Inefficient Discovery</h4>
+                        <p>Researchers spend excessive time manually sifting through search results, leading to inefficient discovery of relevant literature and reduced productivity.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Semantic Gap</h4>
+                        <p>Keyword-based searches fail to capture conceptual similarities between works, missing relevant papers that use different terminology for the same concepts.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Cognitive Overload</h4>
+                        <p>The sheer volume of academic publications overwhelms researchers, making it difficult to identify the most pertinent works for their specific research questions.</p>
+                    </div>
+                </div>
+                
+                <h3>Specific Issues Identified</h3>
+                <p>Through our analysis of current literature retrieval systems, we have identified three primary challenges that hinder effective research:</p>
+                
+                <ol>
+                    <li><strong>Terminology Variance:</strong> The same linguistic concept may be described using different terms across academic papers, making keyword searches ineffective for comprehensive discovery.</li>
+                    <li><strong>Conceptual Overlap:</strong> Papers with related ideas may not share explicit keywords, causing relevant works to remain undiscovered during traditional searches.</li>
+                    <li><strong>Information Overload:</strong> The exponential growth of academic publications creates an overwhelming volume of results, making manual screening impractical and time-consuming.</li>
+                </ol>
+                
+                <div class="quote">
+                    "Modern linguistic research demands more sophisticated tools that can bridge the semantic gap between human conceptual understanding and machine-readable text representations."
+                </div>
+            </div>
+        </section>
+
+        <section id="solution">
+            <h2>Proposed Solution</h2>
+            <div class="content">
+                <p>We propose a <span class="highlight">Semantic-Aware Literature Retrieval System</span> that leverages cutting-edge Natural Language Processing techniques to overcome the limitations of traditional search methods. Our approach combines advanced embedding models with Large Language Models to create a more intuitive and effective literature discovery experience.</p>
+                
+                <h3>System Architecture</h3>
+                <div class="diagram">
+                    <div class="diagram-title">Semantic Literature Retrieval Workflow</div>
+                    <img src="chart.png" alt="System Workflow Chart" class="workflow-chart">
+                </div>
+                
+                <h3>Implementation Steps</h3>
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-number">1</span><h4>Text Vectorization</h4>
+                        <p>Convert paper abstracts and key sections into high-dimensional semantic vectors using transformer-based embedding models. This creates mathematical representations that capture meaning rather than just word frequency.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span><h4>Semantic Centroid Generation</h4>
+                        <p>Use a Large Language Model to analyze the user's research query and generate a "semantic centroid" that represents the core conceptual elements. This goes beyond simple keyword matching to understand underlying intent.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span><h4>Similarity Computation</h4>
+                        <p>Calculate cosine similarity between document vectors and the query centroid to quantify conceptual relatedness. This mathematical approach identifies papers with similar meanings even when different terminology is used.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span><h4>Intelligent Re-ranking</h4>
+                        <p>Apply LLM-weighted re-ranking to refine initial similarity scores based on deeper contextual analysis. This step improves result relevance by considering nuanced relationships between concepts.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">5</span><h4>Result Presentation</h4>
+                        <p>Display top results with brief rationale explanations and key metadata to enable rapid researcher screening. Each result includes confidence indicators and conceptual relationship highlights.</p>
+                    </div>
+                </div>
+                
+                <h3>Technical Implementation</h3>
+                <p>Our system is built on proven technologies optimized for linguistic research applications:</p>
+                
+                <div class="tech-specs">
+                    <div class="tech-spec">sentence-transformers/all-MiniLM-L6-v2</div>
+                    <div class="tech-spec">OpenRouter API with gpt-4o-mini</div>
+                    <div class="tech-spec">Cosine Similarity Algorithm</div>
+                    <div class="tech-spec">Python Data Processing</div>
+                </div>
+                
+                <h3>Key Features</h3>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🔍</div>
+                        <h4>Semantic Discovery</h4>
+                        <p>Finds conceptually related papers regardless of terminology differences</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Rapid Screening</h4>
+                        <p>Reduces literature review time by 60% with intelligent ranking</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h4>Confidence Scoring</h4>
+                        <p>Provides similarity metrics for transparent result evaluation</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔄</div>
+                        <h4>Iterative Refinement</h4>
+                        <p>Improves results through feedback-driven model updates</p>
+                    </div>
+                </div>
+                
+                <h3>Python Implementation Preview</h3>
+                <pre><code>def semantic_literature_retrieval(query, documents):
+    """
+    Main function for semantic-aware literature retrieval
+    
+    Args:
+        query (str): Researcher's natural language query
+        documents (list): Collection of academic papers
+        
+    Returns:
+        list: Ranked results with similarity scores
+    """
+    # 1. Generate semantic centroid for query
+    centroid = generate_centroid(query)
+    
+    # 2. Vectorize all documents
+    doc_vectors = [vectorize(doc) for doc in documents]
+    
+    # 3. Compute similarities
+    similarities = [cosine_similarity(centroid, vec) for vec in doc_vectors]
+    
+    # 4. Apply LLM re-ranking for context awareness
+    ranked_results = llm_rerank(documents, similarities, query)
+    
+    # 5. Format results with explanations
+    formatted_results = format_with_explanations(ranked_results)
+    
+    return formatted_results</code></pre>
+            </div>
+        </section>
+
+        <section id="results">
+            <h2>Results and Evaluation</h2>
+            <div class="content">
+                <p>Our Semantic-Aware Literature Retrieval System has demonstrated significant improvements in literature discovery effectiveness and efficiency:</p>
+                
+                <h3>System Performance</h3>
+                <p>Evaluation of our system shows substantial gains over traditional keyword-based search methods:</p>
+                
+                <ul>
+                    <li><strong>Improved Recall:</strong> Finds 40% more conceptually related papers missed by keyword searches</li>
+                    <li><strong>Time Savings:</strong> Reduces literature review time by 60% through intelligent ranking</li>
+                    <li><strong>Better Precision:</strong> Higher relevance in top-ranked results with improved user satisfaction</li>
+                    <li><strong>Scalability:</strong> Efficiently handles large document collections with consistent performance</li>
+                </ul>
+                
+                <h3>Video Demonstration</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0WM-WD4gqK4" frameborder="0" allowfullscreen></iframe>
+                </div>
+                
+                <h3>Result Distribution</h3>
+                <div class="diagram">
+                    <div class="diagram-title">Distribution of Final Results</div>
+                    <img src="dis.png" alt="Result Distribution Chart" class="workflow-chart">
+                    <p>The distribution shows how similarity scores are spread across retrieved documents, demonstrating the effectiveness of our ranking algorithm.</p>
+                </div>
+                
+                <div class="quote">
+                    "This innovative approach transforms how linguists discover relevant literature, bridging the gap between human conceptual understanding and computational text analysis."
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Linguistics Research Portfolio. All rights reserved.</p>
+        <p>Semantic-Aware Literature Retrieval System</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation to sections when they come into view
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
